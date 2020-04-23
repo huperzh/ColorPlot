@@ -8,12 +8,12 @@
     File->Add file - выбираем и загружаем необходимый файл.  
     Можно просто перетащить файл в окно приложения или воспользоваться вызовом через консоль.  
     Clear - очищает вывод.  
-    ![Map->(black_gray_white,blue_white_red,green_yellow_red) - вывод будет состоять из этих трех цветов и их оттенков.](https://github.com/Diceorfl/ColorPlot/blob/master/ex.PNG?raw=true) 
+    Map->(black_gray_white,blue_white_red,green_yellow_red) - вывод будет состоять из этих трех цветов и их оттенков.  
     Color scaling - раскраска пересчивается только для данных, которые попали в область видимости пользователя.   
     Grid - добавляет сетку.  
     Изменение масштаба происходит с помощью колесика мышки. Можно зажать ПКМ и выделить необходимую область для отображения.  
     Если зажать ЛКМ, то можно передвигать изображение.  
-    Если нажать на колесико мышки, то все действие над изображением отменятся.
+    Если нажать на колесико мышки, то все действие над изображением отменятся.  
 
     #### Требования для сборки проекта:  
          Комплект: Qt5.14.2 MSVC2017/mingw73 32 или 64 bit.  
@@ -34,3 +34,12 @@
 
     #### Requirements for building the project:  
          Qt5.14.2 MSVC2017 / mingw73 32 or 64 bit.  
+
+![](https://github.com/Diceorfl/ColorPlot/blob/master/ex.PNG?raw=true)  
+![](https://github.com/Diceorfl/ColorPlot/blob/master/ex1.PNG?raw=true)  
+![](https://github.com/Diceorfl/ColorPlot/blob/master/ex2.PNG?raw=true)  
+![](https://github.com/Diceorfl/ColorPlot/blob/master/ex3.PNG?raw=true)  
+![](https://github.com/Diceorfl/ColorPlot/blob/master/ex4.PNG?raw=true)  
+![](https://github.com/Diceorfl/ColorPlot/blob/master/ex5.PNG?raw=true)  
+![](https://github.com/Diceorfl/ColorPlot/blob/master/ex6.PNG?raw=true)  
+![](https://github.com/Diceorfl/ColorPlot/blob/master/ex7.PNG?raw=true)  
