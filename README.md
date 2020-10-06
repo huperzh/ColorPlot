@@ -1,5 +1,5 @@
 # ColorPlot  
-## Приложение переводит трехмерные данные в двухмерную картинку/The application converts three-dimensional data into a two-dimensional image  
+## Приложение переводит трехмерные данные в двухмерную картинку/The app converts three-dimensional data into a two-dimensional image  
 
 ### Как это работает?  
     На вход подается файл формата txt, который содержит таблицу с какими-либо данными.   
@@ -20,7 +20,7 @@
 
 ### Description  
     The input file is a txt format file that contains a table with some data.  
-    The application normalizes this data in your selected range of colors and displays the resulting image.  
+    The app normalizes this data in your selected range of colors and displays the resulting image.  
 ### How does it work?  
     File-> Add file - select and load file.  
     You can drag and drop the file into the application window or use CMD.  
