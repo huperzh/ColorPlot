@@ -54,7 +54,8 @@ void clrplt::getloadpercent(QString message)
     this->setWindowTitle(message);
 }
 
-void clrplt::resizeEvent(QResizeEvent *event) //изменение системы координат, если изменился размер виджета
+//изменение системы координат, если изменился размер виджета
+void clrplt::resizeEvent(QResizeEvent *event) 
 {
     Q_UNUSED(event)
     bpoint = QPointF(bpoint.x()*width()/oldsize.x(),bpoint.y()*height()/oldsize.y());
@@ -65,7 +66,8 @@ void clrplt::resizeEvent(QResizeEvent *event) //изменение систем�
         StartPaint();
 }
 
-void clrplt::dragEnterEvent(QDragEnterEvent *event) //нужны, чтобы можно было перетащить файл на виджет
+//нужны, чтобы можно было перетащить файл на виджет
+void clrplt::dragEnterEvent(QDragEnterEvent *event) 
 {
     event->accept();
 }
@@ -87,7 +89,8 @@ void clrplt::dropEvent(QDropEvent *event)
     QtConcurrent::run(this,&clrplt::Load,path);
 }
 
-void clrplt::closeEvent(QCloseEvent *event) //корректное завершение, если есть активный поток
+//корректное завершение, если есть активный поток
+void clrplt::closeEvent(QCloseEvent *event) 
 {
    Q_UNUSED(event)
    if(future.isRunning())
@@ -204,18 +207,22 @@ void clrplt::mouseReleaseEvent(QMouseEvent *event)
         }
         else
             selectepoint.setY(event->pos().y());
-        if(int(selectbpoint.x()) == int(selectepoint.x()) || int(selectbpoint.y()) == int(selectepoint.y()))
+        if(int(selectbpoint.x()) == int(selectepoint.x()) || 
+           int(selectbpoint.y()) == int(selectepoint.y()))
         {
             emit sendrepaint();
             return;
         }
-        selectbpoint = QPointF((selectbpoint.x() - bpoint.x())/kX*((double(width())/Zco[0].size())),(selectbpoint.y() - bpoint.y())/kY*(double(height())/Zco.size()));
-        selectepoint = QPointF((selectepoint.x() - bpoint.x())/kX*((double(width())/Zco[0].size())),(selectepoint.y() - bpoint.y())/kY*(double(height())/Zco.size()));
+        selectbpoint = QPointF((selectbpoint.x() - bpoint.x())/kX*((double(width())/Zco[0].size())),
+                               (selectbpoint.y() - bpoint.y())/kY*(double(height())/Zco.size()));
+        selectepoint = QPointF((selectepoint.x() - bpoint.x())/kX*((double(width())/Zco[0].size())),
+                               (selectepoint.y() - bpoint.y())/kY*(double(height())/Zco.size()));
         kX = double(width())/Zco[0].size();
         kY = double(height())/Zco.size();
         kX *= width()/(selectepoint.x() - selectbpoint.x());
         kY *= height()/(selectepoint.y() - selectbpoint.y());
-        bpoint = -(QPointF(selectbpoint.x()*kX/(double(width())/Zco[0].size()),selectbpoint.y()*kY/(double(height())/Zco.size())));
+        bpoint = -(QPointF(selectbpoint.x()*kX/(double(width())/Zco[0].size()),
+                           selectbpoint.y()*kY/(double(height())/Zco.size())));
         StartPaint();
     }
 }
@@ -227,7 +234,8 @@ void clrplt::wheelEvent(QWheelEvent *event) //Зум
     ||  int(cursor().pos().y() - this->geometry().y()) < 0
     ||  int(cursor().pos().y() - this->geometry().y()) > height()) return;
     QPointF delta = event->angleDelta()/120;
-    QPointF oldCo = QPointF(cursor().pos().x() - this->geometry().x(),cursor().pos().y() - this->geometry().y()) - bpoint;
+    QPointF oldCo = QPointF(cursor().pos().x() - this->geometry().x(),
+                            cursor().pos().y() - this->geometry().y()) - bpoint;
     QPointF newCo;
     if(delta.y() > 0)
     {
@@ -271,7 +279,8 @@ void clrplt::Load(QString path)
 {
     QFile Inputfile(path);
     QFileInfo InputfileInfo(path);
-    if(!Inputfile.exists() || !Inputfile.open(QIODevice::ReadOnly) || InputfileInfo.completeSuffix() != "txt")
+    if(!Inputfile.exists() || !Inputfile.open(QIODevice::ReadOnly) ||
+       InputfileInfo.completeSuffix() != "txt")
     {
         emit sendwrongpath("File doesn't exist or couldn't be open!");
         return;
@@ -348,7 +357,8 @@ double clrplt::ColorCoef()
    return 255/(Max-Min);
 }
 
-QColor clrplt::white_gray_black(int color) //цвет для прямоугольника
+//цвет для прямоугольника
+QColor clrplt::white_gray_black(int color) 
 {
     if(color >=0 && color <= 255)
         return QColor(color,color,color);
@@ -509,7 +519,8 @@ void clrplt::on_actiongreen_yellow_red_triggered()
     StartPaint();
 }
 
-void clrplt::Back() // Возвращает изображение в начальное положение
+// Возвращает изображение в начальное положение
+void clrplt::Back() 
 {
     bpoint = QPointF(0,0);
     oldsize = QPointF(width(),height());
@@ -518,14 +529,16 @@ void clrplt::Back() // Возвращает изображение в начал
     StartPaint();
 }
 
-void clrplt::on_actionGrid_triggered() // Cетка
+// Cетка
+void clrplt::on_actionGrid_triggered() 
 {
     if(Zco.isEmpty())
         return;
     StartPaint();
 }
 
-void clrplt::on_actionColor_scaling_triggered() // Пересчитывает цветовой коэффициент для текущей локальной части
+// Пересчитывает цветовой коэффициент для текущей локальной части
+void clrplt::on_actionColor_scaling_triggered() 
 {
     if(Zco.isEmpty())
         return;
